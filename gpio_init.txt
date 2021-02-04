@@ -1,0 +1,109 @@
+/*
+
+    //xTaskCreate(task2,"Mirza TASK2", 2048, NULL, 5, &Task2_handle);
+    io_conf5.mode = GPIO_MODE_INPUT;
+    io_conf5.pin_bit_mask = (1ULL<<5); //bit mask of the pins that you wnat to set, eg: GPIO18
+    io_conf5.pull_down_en = GPIO_PULLDOWN_DISABLE;
+    io_conf5.pull_up_en = GPIO_PULLUP_DISABLE;
+    error = gpio_config(&io_conf5);
+
+    io_conf18.mode = GPIO_MODE_INPUT;
+    io_conf18.pin_bit_mask = (1ULL<<18); //bit mask of the pins that you wnat to set, eg: GPIO18
+    io_conf18.pull_down_en = GPIO_PULLDOWN_DISABLE;
+    io_conf18.pull_up_en = GPIO_PULLUP_DISABLE;
+    error = gpio_config(&io_conf18);*/
+
+
+
+
+    void I2Communication(void const * argument) {
+ /* USER CODE BEGIN I2Communication */ 
+
+  /* Infinite loop */
+  for(;;)
+    {
+        HAL_I2C_Mem_Read (&hi2c1, SLAVEI2C_ADD, 0x28, 1,(uint8_t *)OUT_X_L, 1, 100); 
+        HAL_I2C_Mem_Read (&hi2c1, SLAVEI2C_ADD, 0x29, 1,(uint8_t *)OUT_X_H, 1, 100); 
+        HAL_I2C_Mem_Read (&hi2c1, SLAVEI2C_ADD, 0x2A, 1,(uint8_t *)OUT_Y_L, 1, 100); 
+        HAL_I2C_Mem_Read (&hi2c1, SLAVEI2C_ADD, 0x2B, 1,(uint8_t *)OUT_Y_H, 1, 100); 
+        HAL_I2C_Mem_Read (&hi2c1, SLAVEI2C_ADD, 0x2C, 1,(uint8_t *)OUT_Z_L, 1, 100); 
+        HAL_I2C_Mem_Read (&hi2c1, SLAVEI2C_ADD, 0x2D, 1,(uint8_t *)OUT_Z_H, 1, 100); // Registre OUT_Z_H
+        x = ((OUT_X_H[0]<<8)|OUT_X_L[0]);
+        y = ((OUT_Y_H[0]<<8)|OUT_Y_L[0]);
+        z = ((OUT_Z_H[0]<<8)|OUT_Z_L[0]);
+        osDelay(500);
+    }
+    vTaskDelete(GPS_handle);
+}
+
+
+
+//read all registers
+error = adxl345_read(0x00,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x00:%3d",error,val);
+        error = adxl345_read(0x1d,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x1d:%3d",error,val);
+        error = adxl345_read(0x1e,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x1e:%3d",error,val);
+        error = adxl345_read(0x1f,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x1f:%3d",error,val);
+        error = adxl345_read(0x20,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x20:%3d",error,val);
+        error = adxl345_read(0x22,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x22:%3d",error,val);
+        error = adxl345_read(0x24,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x24:%3d",error,val);
+        error = adxl345_read(0x25,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x25:%3d",error,val);
+        error = adxl345_read(0x26,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x26:%3d",error,val);
+        error = adxl345_read(0x27,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x27:%3d",error,val);
+        error = adxl345_read(0x28,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x28:%3d",error,val);
+        error = adxl345_read(0x29,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x29:%3d",error,val);
+        error = adxl345_read(0x2a,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x2a:%3d",error,val);
+        error = adxl345_read(0x2b,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x2b:%3d",error,val);
+        error = adxl345_read(0x2c,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x2c:%3d",error,val);
+        error = adxl345_read(0x2d,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x2d:%3d",error,val);
+        error = adxl345_read(0x2e,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x2e:%3d",error,val);
+        error = adxl345_read(0x2f,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x2f:%3d",error,val);
+        error = adxl345_read(0x30,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x30:%3d",error,val);
+        error = adxl345_read(0x31,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x31:%3d",error,val);
+        error = adxl345_read(0x32,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x32:%3d",error,val);
+        error = adxl345_read(0x33,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x33:%3d",error,val);
+        error = adxl345_read(0x34,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x34:%3d",error,val);
+        error = adxl345_read(0x35,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x35:%3d",error,val);
+        error = adxl345_read(0x36,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x36:%3d",error,val);
+        error = adxl345_read(0x37,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x37:%3d",error,val);
+        error = adxl345_read(0x38,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x38:%3d",error,val);
+        error = adxl345_read(0x39,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x39:%3d",error,val);
+    error = adxl345_read(DATAX0,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t xL:%3d",error,val);
+    error = adxl345_read(DATAX1,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t xH:%3d",error,val);
+    error = adxl345_read(DATAY0,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t yL:%3d",error,val);
+    error = adxl345_read(DATAY1,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t yH:%3d",error,val);
+    error = adxl345_read(DATAZ0,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t zL:%3d",error,val);
+    error = adxl345_read(DATAZ1,&(val),1);
+        ESP_LOGI("result:CHECK","Accelerometer err:%d\t zH:%3d",error,val);
