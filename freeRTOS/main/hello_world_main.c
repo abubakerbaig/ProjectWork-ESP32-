@@ -164,7 +164,7 @@ static void adxl345_init() {
     }
 
 //read all registers
-    error = adxl345_read(0x00,&(val),1);
+/*    error = adxl345_read(0x00,&(val),1);
         ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x00:%3d",error,val);
     error = adxl345_read(0x1d,&(val),1);
         ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x1d:%3d",error,val);
@@ -232,7 +232,7 @@ static void adxl345_init() {
         ESP_LOGI("result:CHECK","Accelerometer err:%d\t zL:%3d",error,val);
     error = adxl345_read(DATAZ1,&(val),1);
         ESP_LOGI("result:CHECK","Accelerometer err:%d\t zH:%3d",error,val);
-} 
+} */
 
 uint16_t byte_swap(uint16_t data)   {
     return((data >> 8) | (data << 8));
