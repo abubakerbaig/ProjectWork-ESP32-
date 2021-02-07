@@ -162,7 +162,6 @@ static void adxl345_init() {
             ESP_LOGE("ADXL345 INIT Task", "ID = 0x%X (not correct)(should be 0x%X)",val,DEVID_FIXED);
         }
     }
-
 //read all registers
 /*    error = adxl345_read(0x00,&(val),1);
         ESP_LOGI("result:CHECK","Accelerometer err:%d\t 0x00:%3d",error,val);
@@ -291,7 +290,7 @@ void app_main(void) {
                 acc.x/=4;
                 acc.y/=4;
                 acc.z/=4;
-*/
+            */
                 ESP_LOGI("result:","Accelerometer err:%d\t x:%3d\t y:%3d\t z:%3d", error, acc.x, acc.y, acc.z);
                 //ESP_LOGI("result:","Accelerometer err:%d\t x:%3d",error,x);
 
@@ -310,7 +309,6 @@ void app_main(void) {
             }
         }
     }
-
     else    {
         ESP_LOGD("install failed : ","couldn't install i2c\n");
     }
